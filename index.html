@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deepak Dorik — Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  :root{--bg:#0b1020;--card:#061021;--accent:#00d4ff;--accent2:#7c3aed;--muted:#9bb0c8}
+  *{box-sizing:border-box;scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#040612 0%,#07172a 100%);color:#dfefff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1100px;margin:36px auto;padding:28px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:20px;animation:fadeDown 1s ease-in-out}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+  .brand{display:flex;gap:16px;align-items:center}
+  .logo{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#051125;font-size:22px;animation:pop 1.2s ease-in-out}
+  @keyframes pop{0%{transform:scale(0);opacity:0;}80%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}}
+  h1{font-size:40px;margin:0;line-height:1}
+  .sub{color:var(--muted);margin-top:6px}
+  nav{display:flex;gap:14px}
+  nav a{color:var(--muted);text-decoration:none;font-weight:600;position:relative;transition:.3s}
+  nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;background:var(--accent);transition:width .3s}
+  nav a:hover{color:var(--accent)} nav a:hover::after{width:100%}
+
+  .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:start}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:26px;border-radius:12px;box-shadow:0 10px 40px rgba(1,6,20,0.6);backdrop-filter:blur(6px);transition:transform .4s ease,box-shadow .4s ease}
+  .card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(2,6,23,0.8)}
+  .intro{font-size:20px;margin:0 0 10px}
+  .typed{color:var(--accent);font-weight:700}
+  .lead{color:var(--muted);margin-bottom:18px}
+  .cta{display:flex;gap:12px;margin-top:12px}
+  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:10px 14px;border-radius:10px;color:#021024;font-weight:700;text-decoration:none;transition:all .3s ease}
+  .btn:hover{transform:scale(1.05);box-shadow:0 0 15px var(--accent)}
+  .btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--muted)}
+  .btn.outline:hover{color:var(--accent);border-color:var(--accent)}
+
+  .stats{display:flex;gap:14px;margin-top:18px}
+  .stat{flex:1;padding:14px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center;transition:transform .4s}
+  .stat:hover{transform:translateY(-4px)}
+  .stat h3{margin:0;font-size:20px;color:var(--accent)}
+  .stat p{margin:6px 0 0;color:var(--muted)}
+
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .skill-bar{background:rgba(255,255,255,0.03);padding:10px;border-radius:8px}
+  .skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .meter{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+  .meter > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
+
+  .timeline{margin-top:18px;position:relative;padding-left:18px}
+  .timeline::before{content:'';position:absolute;left:6px;top:0;width:2px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .tl-item{position:relative;padding:12px 0 12px 22px;opacity:0;transform:translateX(-30px);transition:all 1s ease}
+  .tl-item.visible{opacity:1;transform:none}
+  .tl-item strong{display:block}
+  .tl-date{color:var(--muted);font-size:13px}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+  .project{padding:14px;border-radius:10px;background:rgba(255,255,255,0.02);transition:transform .3s,box-shadow .3s}
+  .project:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,212,255,.3)}
+  .project a{color:var(--accent);text-decoration:none;font-weight:700}
+
+  #scrollTopBtn{position:fixed;bottom:24px;right:24px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021024;font-weight:700;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;display:none;transition:.3s}
+  #scrollTopBtn:hover{transform:translateY(-3px);box-shadow:0 0 15px var(--accent)}
+
+  footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px;animation:fadeUp 1s ease-in-out}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:920px){.hero{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr}.logo{width:56px;height:56px}}
+</style>
+
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">DD</div>
+        <div>
+          <h1>Deepak Dorik</h1>
+          <div class="sub">Web Developer • WordPress • Shopify • Custom Plugins</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <section class="card" id="about">
+        <p class="intro">Hi, I'm <strong>Deepak</strong> — <span class="typed" id="typed">Web Developer</span></p>
+        <p class="lead">A passionate developer experienced in WordPress, Joomla, Drupal, and Shopify. Skilled at creating efficient, user‑friendly, and scalable websites with seamless functionality.</p>
+        <div class="cta">
+          <a class="btn" href="Deepak_Dorik_Final_resume.pdf" download>Download CV</a>
+          <a class="btn outline" href="mailto:deepakdorik73@gmail.com">Hire Me</a>
+        </div>
+      </section>
+      <aside class="card">
+        <div><strong>Contact</strong><br>Email: deepakdorik73@gmail.com<br>Phone: +91 75750 45349</div>
+        <div style="margin-top:12px"><strong>Languages</strong><br>Hindi • English • Marathi • Gujarati</div>
+      </aside>
+    </section>
+
+    <section id="skills" class="card fade-up" style="margin-top:24px">
+      <h2>Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-bar"><div class="skill-row"><span>WordPress Development</span><strong>95%</strong></div><div class="meter" data-value="95"><span></span></div></div>
+          <div class="skill-bar"><div class="skill-row"><span>WooCommerce</span><strong>90%</strong></div><div class="meter" data-value="90"><span></span></div></div>
+          <div class="skill-bar"><div class="skill-row"><span>Custom Plugin Work</span><strong>88%</strong></div><div class="meter" data-value="88"><span></span></div></div>
+        </div>
+        <div>
+          <div class="skill-bar"><div class="skill-row"><span>Payment Integration</span><strong>85%</strong></div><div class="meter" data-value="85"><span></span></div></div>
+          <div class="skill-bar"><div class="skill-row"><span>Website Optimization</span><strong>80%</strong></div><div class="meter" data-value="80"><span></span></div></div>
+          <div class="skill-bar"><div class="skill-row"><span>Responsive Design</span><strong>90%</strong></div><div class="meter" data-value="90"><span></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="card fade-up" style="margin-top:24px">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <div class="tl-item"><strong>Web Developer — Dvio Digital</strong><div class="tl-date">Feb 2022 — Present</div><div class="small">Worked across multiple CMS platforms, including WordPress, Drupal, Joomla, Shopify, and Wix. Built advanced custom plugins, payment gateway integrations, and booking systems.</div></div>
+        <div class="tl-item"><strong>WordPress Developer — Concept Infoway, Ahmedabad</strong><div class="tl-date">Jan 2021 — Jan 2022</div><div class="small">Developed WordPress themes and plugins, enhanced website functionality, and improved load times through optimization.</div></div>
+      </div>
+    </section>
+
+    <section id="education" class="card fade-up" style="margin-top:24px">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="tl-item"><strong>Master of Computer Applications (MCA)</strong><div class="tl-date">Nadiad — Completed Full‑Time</div></div>
+        <div class="tl-item"><strong>Bachelor of Computer Applications (BCA)</strong><div class="tl-date">Bharuch — Introduced to programming, databases, and IT fundamentals</div></div>
+        <div class="tl-item"><strong>Introduction to Artificial Intelligence — Course</strong><div class="tl-date">Learned Machine Learning, Neural Networks, and AI Applications</div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="card fade-up" style="margin-top:24px">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project"><strong>Joy & Crew</strong><div class="small">Travel Booking Platform</div><a href="https://joy-n-crew.com/" target="_blank">joy-n-crew.com</a></div>
+        <div class="project"><strong>Excitel</strong><div class="small">ISP & Landing Pages</div><a href="https://www.excitel.com/" target="_blank">excitel.com</a></div>
+        <div class="project"><strong>Lisney</strong><div class="small">Real Estate Website</div><a href="https://lisney.com/" target="_blank">lisney.com</a></div>
+        <div class="project"><strong>London Foot & Ankle Surgery</strong><div class="small">Medical Website</div><a href="https://www.londonfootandanklesurgery.co.uk/" target="_blank">londonfootandanklesurgery.co.uk</a></div>
+        <div class="project"><strong>FC4S</strong><div class="small">Corporate Platform</div><a href="https://fc4s.org/" target="_blank">fc4s.org</a></div>
+        <div class="project"><strong>Sancheti Hospital</strong><div class="small">Healthcare Site</div><a href="https://sanchetihospital.org/" target="_blank">sanchetihospital.org</a></div>
+        <div class="project"><strong>Harbinger</strong><div class="small">AMC System</div><a href="https://www.harbingergroup.com/" target="_blank">harbingergroup.com</a></div>
+        <div class="project"><strong>Localoka</strong><div class="small">Community Portal</div><a href="https://localokalife.com/" target="_blank">localokalife.com</a></div>
+      </div>
+    </section>
+
+    <section id="hobbies" class="card fade-up" style="margin-top:24px">
+      <h2>Hobbies & Interests</h2>
+      <ul>
+        <li>Learning new technologies (AI, Web3, and future web trends)</li>
+        <li>Problem-solving and competitive coding</li>
+        <li>Gaming — creative and strategic thinking</li>
+        <li>Traveling — exploring cultures and broadening perspectives</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card fade-up" style="margin-top:24px">
+      <h2>Contact</h2>
+      <p>Interested in working with me or discussing projects? Feel free to reach out!</p>
+      <p>Email: <a href="mailto:deepakdorik73@gmail.com" style="color:var(--accent)">deepakdorik73@gmail.com</a></p>
+      <p>Phone: +91 75750 45349</p>
+    </section>
+
+    <footer>© <span id="year"></span> Deepak Dorik — Web Developer</footer>
+  </div>
+
+  <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Typing effect
+  (function(){
+    const words=['Web Developer','WordPress Specialist','Shopify & WooCommerce','AI Enthusiast'];
+    let i=0,j=0,fwd=true,el=document.getElementById('typed');
+    function step(){
+      const w=words[i];
+      if(fwd){j++;if(j<=w.length)el.textContent=w.slice(0,j);else{fwd=false;setTimeout(step,900);return}}
+      else{j--;if(j>=0)el.textContent=w.slice(0,j);else{fwd=true;i=(i+1)%words.length;}}
+      setTimeout(step,fwd?80:40);
+    } step();
+  })();
+
+  // Animate skill bars
+  function animateMeters(){
+    document.querySelectorAll('.meter').forEach(m=>{
+      const v=+m.getAttribute('data-value');
+      const span=m.querySelector('span');
+      span.style.width='0%';
+      setTimeout(()=>{span.style.width=v+'%';span.style.transition='width 1.2s ease-in-out';},200);
+    });
+  }
+
+  // Fade-up and reveal animation
+  function revealOnScroll(){
+    document.querySelectorAll('.fade-up, .tl-item').forEach(el=>{
+      const rect=el.getBoundingClientRect();
+      if(rect.top<window.innerHeight-100){el.classList.add('visible');}
+    });
+  }
+
+  // Scroll to top button
+  const scrollBtn=document.createElement('button');
+  scrollBtn.id='scrollTopBtn';
+  scrollBtn.innerText='↑ Top';
+  document.body.appendChild(scrollBtn);
+  scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  window.addEventListener('scroll',()=>{
+    revealOnScroll();
+    scrollBtn.style.display=(window.scrollY>300)?'block':'none';
+  });
+
+  window.addEventListener('load',()=>{
+    revealOnScroll();
+    animateMeters();
+  });
+</script>
+
+</body>
+</html>
